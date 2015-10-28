@@ -30,8 +30,6 @@ gem 'spring',        group: :development
 gem 'bcrypt', '~> 3.1.7'
 gem 'hirb'
 gem 'simple_form'
-gem "carrierwave"
-gem "rmagick"
 gem 'omniauth-facebook'
 # Use unicorn as the app server
 # gem 'unicorn'
