@@ -1,0 +1,53 @@
+ <a href='/users/<%= session[:user_id]%>'>Home Page</a>
+<h1>Name:<%= @user.name%><br></h1>
+<form action='/sessions' method='post'>
+<input type='hidden' name='_method' value='delete'>
+<input name="authenticity_token" type="hidden" value="token_value">
+	<input type='submit' value='log out'>
+</form>
+<%= form_for @profilepic.to_s, :html => {:multipart => true} do |f| %>
+  <%= f.hidden_field :user_id %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.file_field :image %>
+  </p>
+  <p>
+    <%= f.label :remote_image_url, "or image URL" %><br />
+    <%= f.text_field :remote_image_url %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
+<form action='/searches/search'>
+<input type='text' name='search' placeholder='search users'>
+<input name="authenticity_token" type="hidden" value="token_value">
+<input type='submit' value='search'>
+</form>
+<%= flash[:errors]%>
+
+<% if @user.id != session[:user_id] %>
+<% if User.find(session[:user_id]).friendships.where(friend: User.find(@user.id)).empty? == true%>
+<form action='/users/fcreate' method='post'>
+<input type='hidden' name='friend_id' value='<%=@user.id%>'>
+<input type='submit' value='add friend'>
+<input name="authenticity_token" type="hidden" value="token_value">
+</form>
+<%end%>
+<%end%>
+<% if @user.id == session[:user_id] %>
+Friendlist:
+<% @friend.each do |f|%>
+<p><a href='/users/<%=f.friend.id%>'><%= f.friend.name %></a>
+<form action='/users/fdestroy' method='post'>
+<input type='hidden' name='_method' value='delete'>
+<input type='hidden' name='friend_id' value='<%=f.friend.id%>'>
+<input type='Submit' value='remove friend'>
+<input name="authenticity_token" type="hidden" value="token_value">
+</form>
+</p>
+<%end%>
+<%end%>
+<%= flash[:notice]%>
+<%= flash[:error]%>

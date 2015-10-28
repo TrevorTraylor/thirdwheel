@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  provider: MyString
+  uid: MyString
+  name: MyString
+  email: MyString
+  oauth_token: MyString
+  oauth_expires_at: 2015-10-28 00:43:49
+  password_digest: <%= BCrypt::Password.create('secret') %>
+
+two:
+  provider: MyString
+  uid: MyString
+  name: MyString
+  email: MyString
+  oauth_token: MyString
+  oauth_expires_at: 2015-10-28 00:43:49
+  password_digest: <%= BCrypt::Password.create('secret') %>

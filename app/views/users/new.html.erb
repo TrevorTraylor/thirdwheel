@@ -1,0 +1,16 @@
+<h1>Users#new</h1>
+<form action='/users' method='post'>
+	name:<input type='text' name='user[name]'>
+	email:<input type='text' name='user[email]'>
+	password:<input type='password' name='user[password]'>
+	confirm password:<input type='password' name='user[password_confirmation]'>
+	<input type='submit' name='create user'>
+	<input name="authenticity_token" type="hidden" value="token_value">
+</form>
+<%if flash[:errors]%>
+	<%flash[:errors].each do |e|%>
+	<%= e %>
+	<% end %>
+<% end %>
+
+
