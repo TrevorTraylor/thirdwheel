@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include UsersHelper
   before_action :set_auth
   def index
 
@@ -21,11 +22,19 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def profile
+    if session[:user_id]
+      @user=User.find(params[:id])
+    end
+  end
+  
+
 
   def create
   	user = User.create(user_params)
   	if user.save
-  		redirect_to '/'
+      sign_in user
+      redirect_to "/users/#{session[:user_id]}"
   	else
   		flash[:errors]= user.errors.full_messages
   		redirect_to '/users/new'

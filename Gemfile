@@ -31,6 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'hirb'
 gem 'simple_form'
 gem 'omniauth-facebook'
+gem 'bootstrap-sass'
 # Use unicorn as the app server
 # gem 'unicorn'
 

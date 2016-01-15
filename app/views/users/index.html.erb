@@ -1,4 +1,64 @@
 <head>
+	<style>
+body {
+    background-image:url('assets/city2.gif');
+    background-size:100%;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    height:100%;
+    width:100%;
+}
+.login {
+	margin-top: 25px !important;
+	padding: 5px;
+	width: auto;
+	min-width: 320px;
+	max-width: 400px;
+	height: 400px;
+	background-color: #f3f3f3;
+	margin:0 auto;
+	border-radius: 10px;
+	border: 1px solid ##c5c5c5;
+    text-align: center;
+}
+.login-inner {
+	margin:0 auto;
+	max-width: 380px;
+	width: auto;
+}
+.login>h4 {
+	font-size: 20px;
+	margin-left: 5px;
+	font-weight: 600;
+}
+.email {
+	margin-bottom: 5px;
+}
+.password {
+	margin-bottom: 5px;
+}
+.submit {
+	margin-top: 5px;
+}
+.forgot {
+	min-width:50px;
+	width: 49%;
+	float: right;
+	margin-top: 20px;
+}
+.register {
+	width: 50%;
+	float: left;
+	margin-top: 20px;
+}
+@media (max-width: 320px) {
+	.forgot {
+		font-size: 9px;
+		font-weight: 700;
+		padding: 8px;
+	}
+}
+</style>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
@@ -8,14 +68,33 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 </head>
-<h1>Users#index</h1>
+<!-- <h1>ThirdWheel</h1>
+<h4> Login here! </h4>
 <form action='/sessions/' method='post'>
-	email:<input type='text' name='email'>
-	password:<input type='password' name='password'>
+	email:<input type='text' name='email'><br>
+	password:<input type='password' name='password'><br>
 	<input type='submit' value='Log In'>
 	<input name="authenticity_token" type="hidden" value="token_value">
 </form>
 <%= link_to "/auth/facebook" do%><%= image_tag('facebook.png',width:'40',height:'40',class: 'img_circle')%>
-<%end%>
-<a href='/users/new'>Sign Up </a>
-<%=flash[:error]%>
+<%end%><br>
+<a href='/users/new'>Not registered? Sign Up Here!</a>
+<%=flash[:error]%> -->
+
+<div class="container">
+	<div class="login">
+		<h4>Login to ThirdWheel</h4>
+			<hr>
+        		<form class="login-inner" action= '/sessions/' method= 'post'>
+    				<input type="text" class="form-control email" id="email-input" name='email' placeholder="Enter email">
+    				<input type="password" class="form-control password" id="password-input" name= 'password' placeholder="Password">
+<!-- 					<label class="checkbox-inline">
+						<input type="checkbox" id="remember" value="Remember me"> Remember me
+					</label> -->
+					<input class="btn btn-block btn-lg btn-success submit" type="submit" value="Login">
+					<input name="authenticity_token" type="hidden" value="token_value">
+				</form>
+			<a href="/users/new" class="btn btn-sm btn-default forgot">Register</a>
+			<a href="/auth/facebook" class="btn btn-sm btn-primary register">Sign up with Facebook!</a>
+	</div>
+</div>
